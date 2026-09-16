@@ -448,6 +448,7 @@ CMakeFiles/aiws_m1.dir/src/processing_core.cpp.obj: C:/Users/marcu/ECE_Software_
   C:/Users/marcu/ECE_Software_Des/applied_software_coursework/fl26-milestone1-marcusm41705/include/aiws/document.hpp \
   C:/Users/marcu/ECE_Software_Des/applied_software_coursework/fl26-milestone1-marcusm41705/include/aiws/processing_core.hpp \
   C:/Users/marcu/ECE_Software_Des/applied_software_coursework/fl26-milestone1-marcusm41705/include/aiws/processing_types.hpp \
+  C:/Users/marcu/ECE_Software_Des/applied_software_coursework/fl26-milestone1-marcusm41705/include/aiws/text_processor.hpp \
   C:/Users/marcu/ECE_Software_Des/applied_software_coursework/fl26-milestone1-marcusm41705/include/aiws/workspace.hpp \
   C:/msys64/mingw64/include/_mingw.h \
   C:/msys64/mingw64/include/_mingw_mac.h \
@@ -1207,6 +1208,8 @@ C:/Users/marcu/ECE_Software_Des/applied_software_coursework/fl26-milestone1-marc
 
 C:/Users/marcu/ECE_Software_Des/applied_software_coursework/fl26-milestone1-marcusm41705/include/aiws/processing_core.hpp:
 
+C:/Users/marcu/ECE_Software_Des/applied_software_coursework/fl26-milestone1-marcusm41705/include/aiws/text_processor.hpp:
+
 C:/Users/marcu/ECE_Software_Des/applied_software_coursework/fl26-milestone1-marcusm41705/include/aiws/workspace.hpp:
 
 C:/msys64/mingw64/include/_timeval.h:
@@ -1268,5 +1271,3 @@ C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/stdint.h:
 C:/Users/marcu/ECE_Software_Des/applied_software_coursework/fl26-milestone1-marcusm41705/src/retrieval_engine.cpp:
 
 C:/Users/marcu/ECE_Software_Des/applied_software_coursework/fl26-milestone1-marcusm41705/src/text_processor.cpp:
-
-C:/Users/marcu/ECE_Software_Des/applied_software_coursework/fl26-milestone1-marcusm41705/include/aiws/text_processor.hpp:
