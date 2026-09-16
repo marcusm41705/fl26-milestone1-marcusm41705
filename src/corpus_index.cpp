@@ -39,9 +39,25 @@ std::size_t CorpusIndex::document_frequency(
 }
 
 std::size_t CorpusIndex::term_frequency(
-    const std::string&,
-    const std::string&) const noexcept {
+    const std::string& normal_term,
+    const std::string& chunk_id) const noexcept {
     // TODO: return the requested term's frequency in the specified chunk.
+    auto c_it = chunk_by_id_.find(chunk_id);
+    if(c_it == chunk_by_id_.end()){
+        return 0;
+    }
+    auto p_it = postings_.find(normal_term);
+    if(p_it == postings_.end()){
+        return 0;
+    }
+    std::size_t intent_index =c_it->second;
+    for(const Posting& posting : p_it->second){
+        if(posting.chunk_index == intent_index){
+            return posting.frequency;
+        }
+
+    }
+    
     return 0;
 }
 

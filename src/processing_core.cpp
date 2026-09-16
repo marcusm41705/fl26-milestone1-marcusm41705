@@ -1,9 +1,13 @@
 #include "aiws/processing_core.hpp"
 #include "aiws/text_processor.hpp"
+#include "aiws/corpus_index.hpp"
+#include <stdexcept>
 namespace aiws {
 
 struct ProcessingCore::Impl {
     // TODO: define the internal state used by the processing core.
+    std::vector<Chunk> chunks_;
+    CorpusIndex corpus_index_;
 };
 
 ProcessingCore::ProcessingCore() : impl_(std::make_unique<Impl>()) { }
@@ -25,25 +29,34 @@ void ProcessingCore::rebuild(const Workspace&) {
 }
 
 const std::vector<Chunk>& ProcessingCore::chunks() const noexcept {
-    static const std::vector<Chunk> empty;
+    //static const std::vector<Chunk> empty;
 
     // TODO: return the chunks currently stored by the processing core.
-    return empty;
+    return impl_->chunks_;
+    
 }
 
 std::size_t ProcessingCore::chunk_count() const noexcept {
     // TODO: return the number of stored chunks.
-    return 0;
+      return impl_->chunks_.size();
 }
 
-std::size_t ProcessingCore::document_frequency(const std::string&) const {
+std::size_t ProcessingCore::document_frequency(const std::string& term) const {
     // TODO: return the document frequency for the requested term.
-    return 0;
+    std::vector<std::string> normal_vector = TextProcessor::terms(term);
+    if(normal_vector.empty()){
+        return 0;
+    }
+    if(normal_vector.size()> 1){
+        throw std::invalid_argument("Term must be a normalized to a single token");
+    }
+    return impl_->corpus_index_.document_frequency(normal_vector[0]);
 }
 
-std::size_t ProcessingCore::term_frequency(const std::string&,
-                                           const std::string&) const {
+std::size_t ProcessingCore::term_frequency(const std::string& term,
+                                           const std::string& chunk_id) const {
     // TODO: return the term frequency for the requested chunk.
+    
     return 0;
 }
 
