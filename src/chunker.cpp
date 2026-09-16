@@ -39,7 +39,7 @@ std::vector<Chunk> Chunker::chunk(const Document& document, std::size_t document
                     break;
                 }
                 if(i == preferred_begin){
-                    break;
+                    break; //Protection
                 }
             }
 
