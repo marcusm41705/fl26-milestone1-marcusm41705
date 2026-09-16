@@ -1,5 +1,5 @@
 #include "aiws/processing_core.hpp"
-
+#include "aiws/text_processor.hpp"
 namespace aiws {
 
 struct ProcessingCore::Impl {
@@ -16,37 +16,12 @@ ProcessingCore& ProcessingCore::operator=(ProcessingCore&&) noexcept = default;
 
 std::string ProcessingCore::normalize(const std::string& text) {
     // TODO: return the normalized form of the input text.
-    std::string result; //String to store the normalized version of the input string
-    bool separator = false; 
-    //Bool variable that tracks one/more separation characters 
-    //and allows separation characters to be replaced by a single space
-    for(unsigned char ch : text){ 
-    if(ch >= 'A' && ch <= 'Z'){ //Conversion from uppercase to lowercase letters
-        if(separator && !result.empty()){ //If separation character reads true
-            result += ' '; //Add space
-        }
-        result += static_cast<char>(ch - 'A' +'a'); //Convert from uppercase to lowercase
-        //Not using std::tolower as specification defines ascii-only
-        separator = false;
-
-    }else if((ch >= 'a' && ch <= 'z') || (ch >= '0' && ch <= '9')){ //If character is lowercase or a number
-        //leave alone
-        if(separator && !result.empty()){
-            result += ' ';
-        }
-        result += static_cast<char>(ch);
-        separator = false;
-    }   else { //Others are separators
-        if(!result.empty()){
-            separator = true;
-        }
-    }
-    }
-    return result;
+    return TextProcessor::normalize(text);
 }
 
 void ProcessingCore::rebuild(const Workspace&) {
     // TODO: rebuild the processing state from the workspace.
+
 }
 
 const std::vector<Chunk>& ProcessingCore::chunks() const noexcept {
