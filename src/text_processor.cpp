@@ -84,7 +84,7 @@ std::vector<std::string> TextProcessor::terms(const std::string& text) {
 }
 
 std::string TextProcessor::normalize(const std::string& text) {
-    // TODO: return the normalized form of the input text.
+    
     std::vector<TokenInfo> token_vector = tokenize(text);
     return join(token_vector, 0, token_vector.size());
 }
@@ -92,7 +92,7 @@ std::string TextProcessor::normalize(const std::string& text) {
 std::string TextProcessor::join(const std::vector<TokenInfo>& token_vector,
                                 std::size_t beginning,
                                 std::size_t end) {
-    // TODO: join the requested token range into normalized text.
+    
     std::string resultString;
     for(auto i =  beginning; i < end; ++i){
         if(!resultString.empty()){
@@ -108,7 +108,7 @@ std::string TextProcessor::join(const std::vector<TokenInfo>& token_vector,
 std::string TextProcessor::join(const std::vector<std::string>& token_vector,
                                 std::size_t begin,
                                 std::size_t end) {
-    // TODO: join the requested term range into normalized text.
+    
     std::string resultString;
     for(auto i = begin; i < end; ++i){
         if(!resultString.empty()){
