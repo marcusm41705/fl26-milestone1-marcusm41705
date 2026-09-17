@@ -55,8 +55,8 @@
 },
 {
   "directory": "C:/Users/marcu/ECE_Software_Des/applied_software_coursework/fl26-milestone1-marcusm41705/build",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/public_tests.dir/includes_CXX.rsp -g -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles\\public_tests.dir\\tests\\student_tests.cpp.obj -c C:\\Users\\marcu\\ECE_Software_Des\\applied_software_coursework\\fl26-milestone1-marcusm41705\\tests\\student_tests.cpp",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/student_tests.dir/includes_CXX.rsp -g -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles\\student_tests.dir\\tests\\student_tests.cpp.obj -c C:\\Users\\marcu\\ECE_Software_Des\\applied_software_coursework\\fl26-milestone1-marcusm41705\\tests\\student_tests.cpp",
   "file": "C:/Users/marcu/ECE_Software_Des/applied_software_coursework/fl26-milestone1-marcusm41705/tests/student_tests.cpp",
-  "output": "CMakeFiles/public_tests.dir/tests/student_tests.cpp.obj"
+  "output": "CMakeFiles/student_tests.dir/tests/student_tests.cpp.obj"
 }
 ]

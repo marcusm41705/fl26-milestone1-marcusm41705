@@ -64,11 +64,13 @@ CMAKE_BINARY_DIR = C:\Users\marcu\ECE_Software_Des\applied_software_coursework\f
 # The main recursive "all" target.
 all: CMakeFiles/aiws_m1.dir/all
 all: CMakeFiles/public_tests.dir/all
+all: CMakeFiles/student_tests.dir/all
 .PHONY : all
 
 # The main recursive "codegen" target.
 codegen: CMakeFiles/aiws_m1.dir/codegen
 codegen: CMakeFiles/public_tests.dir/codegen
+codegen: CMakeFiles/student_tests.dir/codegen
 .PHONY : codegen
 
 # The main recursive "preinstall" target.
@@ -78,6 +80,7 @@ preinstall:
 # The main recursive "clean" target.
 clean: CMakeFiles/aiws_m1.dir/clean
 clean: CMakeFiles/public_tests.dir/clean
+clean: CMakeFiles/student_tests.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -119,12 +122,12 @@ CMakeFiles/aiws_m1.dir/clean:
 CMakeFiles/public_tests.dir/all: CMakeFiles/aiws_m1.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\public_tests.dir\build.make CMakeFiles/public_tests.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\public_tests.dir\build.make CMakeFiles/public_tests.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\marcu\ECE_Software_Des\applied_software_coursework\fl26-milestone1-marcusm41705\build\CMakeFiles --progress-num=10,11,12 "Built target public_tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\marcu\ECE_Software_Des\applied_software_coursework\fl26-milestone1-marcusm41705\build\CMakeFiles --progress-num=10,11 "Built target public_tests"
 .PHONY : CMakeFiles/public_tests.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/public_tests.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\marcu\ECE_Software_Des\applied_software_coursework\fl26-milestone1-marcusm41705\build\CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\marcu\ECE_Software_Des\applied_software_coursework\fl26-milestone1-marcusm41705\build\CMakeFiles 11
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/public_tests.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\marcu\ECE_Software_Des\applied_software_coursework\fl26-milestone1-marcusm41705\build\CMakeFiles 0
 .PHONY : CMakeFiles/public_tests.dir/rule
@@ -136,13 +139,45 @@ public_tests: CMakeFiles/public_tests.dir/rule
 # codegen rule for target.
 CMakeFiles/public_tests.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\public_tests.dir\build.make CMakeFiles/public_tests.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\marcu\ECE_Software_Des\applied_software_coursework\fl26-milestone1-marcusm41705\build\CMakeFiles --progress-num=10,11,12 "Finished codegen for target public_tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\marcu\ECE_Software_Des\applied_software_coursework\fl26-milestone1-marcusm41705\build\CMakeFiles --progress-num=10,11 "Finished codegen for target public_tests"
 .PHONY : CMakeFiles/public_tests.dir/codegen
 
 # clean rule for target.
 CMakeFiles/public_tests.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\public_tests.dir\build.make CMakeFiles/public_tests.dir/clean
 .PHONY : CMakeFiles/public_tests.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/student_tests.dir
+
+# All Build rule for target.
+CMakeFiles/student_tests.dir/all: CMakeFiles/aiws_m1.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\student_tests.dir\build.make CMakeFiles/student_tests.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\student_tests.dir\build.make CMakeFiles/student_tests.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\marcu\ECE_Software_Des\applied_software_coursework\fl26-milestone1-marcusm41705\build\CMakeFiles --progress-num=12,13 "Built target student_tests"
+.PHONY : CMakeFiles/student_tests.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/student_tests.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\marcu\ECE_Software_Des\applied_software_coursework\fl26-milestone1-marcusm41705\build\CMakeFiles 11
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/student_tests.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\marcu\ECE_Software_Des\applied_software_coursework\fl26-milestone1-marcusm41705\build\CMakeFiles 0
+.PHONY : CMakeFiles/student_tests.dir/rule
+
+# Convenience name for target.
+student_tests: CMakeFiles/student_tests.dir/rule
+.PHONY : student_tests
+
+# codegen rule for target.
+CMakeFiles/student_tests.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\student_tests.dir\build.make CMakeFiles/student_tests.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\marcu\ECE_Software_Des\applied_software_coursework\fl26-milestone1-marcusm41705\build\CMakeFiles --progress-num=12,13 "Finished codegen for target student_tests"
+.PHONY : CMakeFiles/student_tests.dir/codegen
+
+# clean rule for target.
+CMakeFiles/student_tests.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\student_tests.dir\build.make CMakeFiles/student_tests.dir/clean
+.PHONY : CMakeFiles/student_tests.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

@@ -151,6 +151,19 @@ public_tests/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\public_tests.dir\build.make CMakeFiles/public_tests.dir/build
 .PHONY : public_tests/fast
 
+#=============================================================================
+# Target rules for targets named student_tests
+
+# Build rule for target.
+student_tests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 student_tests
+.PHONY : student_tests
+
+# fast build rule for target.
+student_tests/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\student_tests.dir\build.make CMakeFiles/student_tests.dir/build
+.PHONY : student_tests/fast
+
 src/chunker.obj: src/chunker.cpp.obj
 .PHONY : src/chunker.obj
 
@@ -372,7 +385,7 @@ tests/student_tests.obj: tests/student_tests.cpp.obj
 
 # target to build an object file
 tests/student_tests.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\public_tests.dir\build.make CMakeFiles/public_tests.dir/tests/student_tests.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\student_tests.dir\build.make CMakeFiles/student_tests.dir/tests/student_tests.cpp.obj
 .PHONY : tests/student_tests.cpp.obj
 
 tests/student_tests.i: tests/student_tests.cpp.i
@@ -380,7 +393,7 @@ tests/student_tests.i: tests/student_tests.cpp.i
 
 # target to preprocess a source file
 tests/student_tests.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\public_tests.dir\build.make CMakeFiles/public_tests.dir/tests/student_tests.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\student_tests.dir\build.make CMakeFiles/student_tests.dir/tests/student_tests.cpp.i
 .PHONY : tests/student_tests.cpp.i
 
 tests/student_tests.s: tests/student_tests.cpp.s
@@ -388,7 +401,7 @@ tests/student_tests.s: tests/student_tests.cpp.s
 
 # target to generate assembly for a file
 tests/student_tests.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\public_tests.dir\build.make CMakeFiles/public_tests.dir/tests/student_tests.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\student_tests.dir\build.make CMakeFiles/student_tests.dir/tests/student_tests.cpp.s
 .PHONY : tests/student_tests.cpp.s
 
 # Help Target
@@ -402,6 +415,7 @@ help:
 	@echo ... test
 	@echo ... aiws_m1
 	@echo ... public_tests
+	@echo ... student_tests
 	@echo ... src/chunker.obj
 	@echo ... src/chunker.i
 	@echo ... src/chunker.s

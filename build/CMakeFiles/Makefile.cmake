@@ -53,4 +53,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/aiws_m1.dir/DependInfo.cmake"
   "CMakeFiles/public_tests.dir/DependInfo.cmake"
+  "CMakeFiles/student_tests.dir/DependInfo.cmake"
   )

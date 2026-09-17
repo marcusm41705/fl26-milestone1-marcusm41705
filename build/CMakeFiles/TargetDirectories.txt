@@ -1,5 +1,6 @@
 C:/Users/marcu/ECE_Software_Des/applied_software_coursework/fl26-milestone1-marcusm41705/build/CMakeFiles/aiws_m1.dir
 C:/Users/marcu/ECE_Software_Des/applied_software_coursework/fl26-milestone1-marcusm41705/build/CMakeFiles/public_tests.dir
+C:/Users/marcu/ECE_Software_Des/applied_software_coursework/fl26-milestone1-marcusm41705/build/CMakeFiles/student_tests.dir
 C:/Users/marcu/ECE_Software_Des/applied_software_coursework/fl26-milestone1-marcusm41705/build/CMakeFiles/test.dir
 C:/Users/marcu/ECE_Software_Des/applied_software_coursework/fl26-milestone1-marcusm41705/build/CMakeFiles/edit_cache.dir
 C:/Users/marcu/ECE_Software_Des/applied_software_coursework/fl26-milestone1-marcusm41705/build/CMakeFiles/rebuild_cache.dir

@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/public_tests.dir/tests/public_tests.cpp.obj"
   "CMakeFiles/public_tests.dir/tests/public_tests.cpp.obj.d"
-  "CMakeFiles/public_tests.dir/tests/student_tests.cpp.obj"
-  "CMakeFiles/public_tests.dir/tests/student_tests.cpp.obj.d"
   "libpublic_tests.dll.a"
   "public_tests.exe"
   "public_tests.exe.manifest"
