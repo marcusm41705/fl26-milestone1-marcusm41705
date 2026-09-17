@@ -8,6 +8,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <string>
+#include <vector>
 namespace {
 int failures = 0;
 void check(bool condition, const std::string& message) {
@@ -176,5 +177,41 @@ int main(){
     auto truncated_ct = builder.build({sr}, 3);
     check(truncated_ct.size() == 1 && truncated_ct[0].text == "marcus mason computer" && truncated_ct[0].token_count == 3
     && truncated_ct[0].truncated, "context will use the largest token prefix when the result doesn't fit");
-    return 0;
+    //Duplicate prevention testing
+    std::vector<SearchResult> duplicate_vector{sr, sr};
+    auto duplicate_ct = builder.build(duplicate_vector,10);
+    check(duplicate_ct.size() == 1, "ContextBuilder will not include the duplicate chunk ID");
+    //-
+    //Processing Core
+    //
+    //Rebuild testing
+    Workspace ws;
+    ws.add_document(Document{"correct", "Correct", "washington commanders"});
+    ProcessingCore c;
+    c.rebuild(ws);
+    check(c.chunk_count() == 1, "A successful and valid rebuild will create an expected corpus");
+    Workspace ws_invalid;
+    ws_invalid.add_document(Document{"duplicate", "Philadelphia", "philadelphia eagles"});
+    ws_invalid.add_document(Document{"duplicate", "Dallas", "cowboys"});
+    bool duplicate_throw = false;
+    try{
+        c.rebuild(ws_invalid);
+    } catch(const std::invalid_argument&) {
+        duplicate_throw = true;
+    }
+    check(duplicate_throw, "documents with the same IDs will throw invalid_argument");
+    check(c.chunk_count() == 1 && c.document_frequency("washington") == 1 && c.document_frequency("philadelphia") == 0, 
+    "valid corpus are preserved upon a failed rebuild");
+    //repeated rebuild
+    c.rebuild(ws);
+    c.rebuild(ws);
+    check(c.chunk_count() == 1, "duplicate state is not accumulated upon a repeated rebuild");
+
+    if (failures == 0) {
+        std::cout << "All student tests passed.\n";
+        return 0;
+    }
+    std::cerr << failures << " student test(s) failed.\n";
+    
+    return 1;
 }
