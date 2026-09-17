@@ -1,0 +1,35 @@
+#build output
+build/
+cmake-build-*/
+#Cmake generated
+CMakeFiles/
+CmakeCache.txt
+cmake_install.cmake
+Makefile
+CTestTestfile.cmake
+#IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+#visual studio
+.vs/
+*user
+*suo
+
+# Generated binaries / objects
+*.o
+*.obj
+*.exe
+*.out
+*.dll
+*.so
+*.a
+
+# Test/input text files
+*.txt
+
+# OS files
+.DS_Store
+Thumbs.db
