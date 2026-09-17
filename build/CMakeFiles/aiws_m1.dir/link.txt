@@ -1,2 +1,0 @@
-C:\msys64\mingw64\bin\ar.exe qc libaiws_m1.a CMakeFiles/aiws_m1.dir/src/document.cpp.obj CMakeFiles/aiws_m1.dir/src/workspace.cpp.obj CMakeFiles/aiws_m1.dir/src/text_processor.cpp.obj CMakeFiles/aiws_m1.dir/src/chunker.cpp.obj CMakeFiles/aiws_m1.dir/src/corpus_index.cpp.obj CMakeFiles/aiws_m1.dir/src/retrieval_engine.cpp.obj CMakeFiles/aiws_m1.dir/src/context_builder.cpp.obj CMakeFiles/aiws_m1.dir/src/processing_core.cpp.obj
-C:\msys64\mingw64\bin\ranlib.exe libaiws_m1.a

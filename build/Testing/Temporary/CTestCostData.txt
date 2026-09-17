@@ -1,3 +1,0 @@
-public_tests 2 0.103654
-student_tests 1 0.0076171
----
