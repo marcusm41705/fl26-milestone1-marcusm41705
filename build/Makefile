@@ -367,6 +367,30 @@ tests/public_tests.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\public_tests.dir\build.make CMakeFiles/public_tests.dir/tests/public_tests.cpp.s
 .PHONY : tests/public_tests.cpp.s
 
+tests/student_tests.obj: tests/student_tests.cpp.obj
+.PHONY : tests/student_tests.obj
+
+# target to build an object file
+tests/student_tests.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\public_tests.dir\build.make CMakeFiles/public_tests.dir/tests/student_tests.cpp.obj
+.PHONY : tests/student_tests.cpp.obj
+
+tests/student_tests.i: tests/student_tests.cpp.i
+.PHONY : tests/student_tests.i
+
+# target to preprocess a source file
+tests/student_tests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\public_tests.dir\build.make CMakeFiles/public_tests.dir/tests/student_tests.cpp.i
+.PHONY : tests/student_tests.cpp.i
+
+tests/student_tests.s: tests/student_tests.cpp.s
+.PHONY : tests/student_tests.s
+
+# target to generate assembly for a file
+tests/student_tests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\public_tests.dir\build.make CMakeFiles/public_tests.dir/tests/student_tests.cpp.s
+.PHONY : tests/student_tests.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -405,6 +429,9 @@ help:
 	@echo ... tests/public_tests.obj
 	@echo ... tests/public_tests.i
 	@echo ... tests/public_tests.s
+	@echo ... tests/student_tests.obj
+	@echo ... tests/student_tests.i
+	@echo ... tests/student_tests.s
 .PHONY : help
 
 

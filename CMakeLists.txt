@@ -18,7 +18,8 @@ add_library(aiws_m1
 target_include_directories(aiws_m1 PUBLIC include)
 target_compile_options(aiws_m1 PRIVATE -Wall -Wextra -Wpedantic)
 
-add_executable(public_tests tests/public_tests.cpp)
+add_executable(public_tests tests/public_tests.cpp
+    tests/student_tests.cpp)
 target_link_libraries(public_tests PRIVATE aiws_m1)
 target_compile_options(public_tests PRIVATE -Wall -Wextra -Wpedantic)
 

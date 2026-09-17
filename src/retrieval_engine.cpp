@@ -66,10 +66,9 @@ return candidate_vector;
 
 
 
-double RetrievalEngine::canonical_score(double) {
-    // TODO: return the score in the required canonical form.
-    
-    return 0.0;
+double RetrievalEngine::canonical_score(double value) {
+    //This rounds score to 12 digits after decimal
+    return std::round(value * 1e12) / 1e12;
 }
 
 
@@ -77,7 +76,6 @@ std::vector<SearchResult> RetrievalEngine::search(const std::string& query,
                                                   int k,
                                                   const std::vector<Chunk>& chunk_vector,
                                                   const CorpusIndex& index) const {
-    // TODO: return the ranked search results for the requested query.
     if(k < 0){ //When k is negative, throw bad argument
         throw std::invalid_argument("k is negative");
     }

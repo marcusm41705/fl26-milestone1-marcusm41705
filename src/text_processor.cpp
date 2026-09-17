@@ -39,7 +39,7 @@ bool ParagraphBreak(const std::string& text, std::size_t beginning, std::size_t 
 }
 
 std::vector<TokenInfo> TextProcessor::tokenize(const std::string& text) {
-    // TODO: produce normalized tokens with source and paragraph information.
+    // Produces the normalized tokens with source and paragraph information.
 std::vector<TokenInfo> token_vector;
 std::size_t i = 0;
 std::size_t paragraph = 0;
@@ -74,7 +74,7 @@ while (i < text.size()){
 
 
 std::vector<std::string> TextProcessor::terms(const std::string& text) {
-    // TODO: return the normalized terms represented by the input text.
+    // Returns the normalized terms represented by the input text.
     std::vector<std::string> result_vector;
     std::vector<TokenInfo> token_vector = tokenize(text);
     for(const TokenInfo& single : token_vector){
