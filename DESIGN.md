@@ -1,18 +1,45 @@
 # M1 DESIGN.md
 
-Replace this template with your own concise engineering explanation.
-
 ## 1. System structure
-Describe the major responsibilities in your M1 subsystem and how they interact.
+
+The M1 system is divided into several components, and each component is responsible for one part of the processing and retrieval core.
+TextProcessor contains functions used for text normalization, tokenization, tracking of paragraphs, and information about source position.
+Chunker uses processed tokens then divides a document into overlapping "chunk" objects that preserve document order, chunk sequence, and source attribution. 
+CorpusIndex is used to build searchable representation of chunks by storing the normalized terms that appear in each chunk as well as the frequency of which they occur.  
+RetrievalEngine uses the CorpusIndex subsystem in order to process search queries, then match chunks by rank using TF-IDF-based scoring with coverage calculations that use query terms. 
+ContextBuilder takes ranked search results then constructs a context that stays within the requested parameter token budget, and truncates the final item, only when needed.
+ProcessingCore is used to coordinate the components using the rebuild() function.
+Rebuild() uses:
+Chunker- processes all of the Documents inside the Workspace
+CorpusIndex- Creates index during rebuild
+RetrievalEngine- Rebuild calls search()
+ContextBuilder- build_context() retrieves the ranked results
 
 ## 2. Design decisions
-Explain the principal data structures, interfaces, and ownership decisions in your implementation and why you selected them.
+
+    For Milestone 1, rather than using a large processing class, the implementation instead uses multiple small data structures.
+    For instance, TokenInfo is a struct inside of TextProcessor that stores a normalized token, its paragraph number and the original source position. This allows the token functions to preserve this information that is needed later by the chunker without editing or modifying the original document. Chunk objects also store the normalized chunk text, sequence number, token count, and source document information so the search results from search functions can be traced back to the source. 
+CorpusIndex uses containers with the function std::unordered map because main operations include term and chunk-ID lookups. One map inside the implementations assosicate each normalized term with a vector composed of postings, and each posting stores the chunk index and term frequency for its respective chunk. Another map is used to associate each of the chunk-ID's with their position inside the chunk vector. This is done to avoid scanning all chunks repeatedly when answering frequency queries or performing retrieval functions. 
+    ProcessingCore owns the processing state using the private Impl object. This object contains the vector std::vector<Chunk> as well as CorpusIndex. However, the other classes (Chunker, RetrievalEngine, ContextBuilder) get treated as temporary objects as they do not need to maintain their state between operations. These ownership choices were chosen to keep ownership simple and to avoid storing unnecessary objects inside the processing core. 
+    Public interfaces are kept compatible using the provided starter headers. Helper functions and internal structures are kept inside of implementation files whenever possible. For example, retrieval helper functions and internal candidate scores structures are private and unexposed through public API. These design choices were used to keep implementation details hidden and to reduce the coupling between the components. 
+    During the rebuild() function inside RetrievalEngine, new chunks and corpus index are constructed using temporary objects nefore the current processing state is replaced. This design was chosen so that a failed rebuild, like one caused by duplicate document ID's, will not modify or destroy the previous valid corpus. 
+
 
 ## 3. Correctness and consistency
-Identify the important invariants or failure cases your design must preserve and explain how your design addresses them.
-
+    Identify the important invariants or failure cases your design must preserve and explain how your design addresses them. Multiple invariants are important for maintaining the correct behavior across the M1 implementation. Document text and search queries use the same normalization rules, and to keep this consistent, both normalization and tokenization are centralized in TextProcessor, and other components reuse the same results, opposed from implementing their own text processing rules.
+    Chunk identity and source attribution remain deterministic, as Chunker preserves the document insertion order and also assigns sequence numbers at the beginning of zero for each document. Chunk IDs are then generated from both document ID and sequence number, and source character positions are then taken from the original Document text through the stored TokenInfo positions. Reprocessing the same document will produce the same chunk ordering and identifiers. 
+    Corpus index rebuilds must completely replace the previous searchable state without leaving stale chunks and duplicated postings. New chunks and index data get created separately before they get assigned to the ProcessingCore state. Duplicate document ID's get detected during the rebuilding process and will cause the std::invalid_argument to be thrown. The existing state is not replaced until the new corpus index is successfully constructed, so therefore a failed rebuild will result in the previous valid corpus index unchanged.
+    RetrievalEngine will also maintain deterministic scoring and ordering. Repeated query terms get reduced to unique normalized terms before the scoring process, unknown terms will contribute no score, and final scores get rounded to twelve decimal places before comparison. Equal scores are then resolved using the document insertion order and chunk sequence, which was chosen to ensure that the same corpus index and query will always produce the results in the same order. 
+    Context construction will preserve the order that is produced by the retrieval and will never exceed the token budget requested inside the parameter.  Duplicate chunk ID's are skipped and complete chunks are included while they can fit, and when the next chunk is too large, the largest fitting token prefix is included and marked as truncated. Processing will stop after the partial chunk. Things such as: empty text and queries, missing terms, zero token budgets, other boundary cases return empty or zero value results instead of producing an invalid state.
 ## 4. Testing strategy
-Explain what your tests cover and which risks or boundaries you considered most important.
+    The student tests are designed to exercise both the individual subsystem behavior and processing flow. Tests were written for TextProcessor, Chunker, CorpusIndex, RetrievalEngine, Context Builder, and integration tests using ProcessingCore. This approach was chosen to isolate bugs for specific subsystems while also verifying that components can work successfully together.
+    For TextProcessor, tests cover: lowercase conversion, digit preservation, punctuation inputs, repeated separators, and paragraph detection using LF and CRLF line endings. If these were not tested, an incorrect normalization system or paragraph tracking can affect later stages of the system. 
+    For Chunking, tests were focused on boundary conditions, including testing with 120 tokens, documents over the maximum size, a specification required 20-token overlap, and paragraph preferred boundaries between a range of positions 100 and 120. Empty documents were also tested for Chunking to ensure an empty document will provide no chunks. The overlap was checked directly by comparing tokens shared between consecutive chunks. 
+    For CorpusIndex, the tests verified the document frequency, the repeated term frequency inside a chunk, unknown terms, and invalid/missing chunk IDs. Retrieval tests verified that repeated query terms will not change the ranking/scores and that query terms that are unknown will produce zero candidates. 
+    For ContextBuilder, the tests covered zero budgets, exact-fit budgets, truncation inside of a chunk, verifying correct truncated text, and the prevention of duplicate chunk IDs.
+        Integration tests focused on corpus rebuilding behaviors. The tests verified that repeat rebuilds would not accumulate duplicate states and that a rebuild containing duplicate document IDs would throw std::invalid_argument without replacing the previous corpus. 
+        The most important risks and boundaries most important were boundary conditions that Autograder would've caught. Conditions that included chunk sizes, paragraph boundaries, retrieval behavior, token budgets, and preservation of valid states after a bad rebuild. These cases are prioritized as they involve interactions between components and are more likely to expose implementation errors than regular normal case inputs.
 
 ## 5. Alternatives considered
-Discuss at least two plausible design alternatives and why you did not choose them.
+    The first alternative considered was to duplicate the normalization logic wherever it was needed, like separately inside both the document processing and query processing. This was redone as small differences between the two can cause index and query terms to be represented differently. Instead, normalization and tokenization became centralized inside TextProcessor. Other components reuse that behavior so that document terms and the query system can remain consistent. 
+    Another alternative considered was for the rebuild() function. It was considered to clear the current chunks and index first, then rebuild directly into the processing state. This approach is simpler, but duplicate document IDs can leave the processing core empty. The final design choice instead constructs new chunks and index inside a temporary state then, replaces the current corpus after a successful rebuild. So on a bad rebuild, the valid corpus is saved. 

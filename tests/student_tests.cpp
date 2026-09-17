@@ -212,6 +212,6 @@ int main(){
         return 0;
     }
     std::cerr << failures << " student test(s) failed.\n";
-    
+   
     return 1;
 }

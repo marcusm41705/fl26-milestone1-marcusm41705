@@ -1,19 +1,35 @@
-Start testing: Sep 16 23:07 Eastern Daylight Time
+Start testing: Sep 17 02:26 Eastern Daylight Time
 ----------------------------------------------------------
-1/1 Testing: public_tests
-1/1 Test: public_tests
+1/2 Testing: public_tests
+1/2 Test: public_tests
 Command: "C:/Users/marcu/ECE_Software_Des/applied_software_coursework/fl26-milestone1-marcusm41705/build/public_tests.exe"
 Directory: C:/Users/marcu/ECE_Software_Des/applied_software_coursework/fl26-milestone1-marcusm41705/build
-"public_tests" start time: Sep 16 23:07 Eastern Daylight Time
+"public_tests" start time: Sep 17 02:26 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 All public tests passed.
 <end of output>
-Test time =   0.01 sec
+Test time =   0.21 sec
 ----------------------------------------------------------
 Test Passed.
-"public_tests" end time: Sep 16 23:07 Eastern Daylight Time
+"public_tests" end time: Sep 17 02:26 Eastern Daylight Time
 "public_tests" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Sep 16 23:07 Eastern Daylight Time
+2/2 Testing: student_tests
+2/2 Test: student_tests
+Command: "C:/Users/marcu/ECE_Software_Des/applied_software_coursework/fl26-milestone1-marcusm41705/build/student_tests.exe"
+Directory: C:/Users/marcu/ECE_Software_Des/applied_software_coursework/fl26-milestone1-marcusm41705/build
+"student_tests" start time: Sep 17 02:26 Eastern Daylight Time
+Output:
+----------------------------------------------------------
+All student tests passed.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"student_tests" end time: Sep 17 02:26 Eastern Daylight Time
+"student_tests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Sep 17 02:26 Eastern Daylight Time

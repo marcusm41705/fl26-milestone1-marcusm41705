@@ -40,9 +40,9 @@ for(const std::string& term: query_terms_vector){
         continue;
     }
     std::size_t doc_frequency = post->size();
-    double id_freq = std::log((static_cast<double>(total_chunks) + 1.0) / (static_cast<double>(doc_frequency) + 1.0)) + 1.0;
+    double idf = std::log((static_cast<double>(total_chunks) + 1.0) / (static_cast<double>(doc_frequency) + 1.0)) + 1.0;
     for(const CorpusIndex::Posting& posting: *post){
-        double term_frequency = 1.0 + std::log(static_cast<double>(posting.frequency));
+        double tf = 1.0 + std::log(static_cast<double>(posting.frequency));
         CandidateScore* candidate = nullptr; //Is this chunk already a candidate?
         for(CandidateScore& current_candid : candidate_vector){
             if(current_candid.chunk_index == posting.chunk_index){
@@ -57,7 +57,7 @@ for(const std::string& term: query_terms_vector){
             candidate = &candidate_vector.back();
         
         }
-        candidate->b_score += term_frequency * id_freq;
+        candidate->b_score += tf * idf;
         ++candidate->match_terms;
     }
 }
