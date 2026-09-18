@@ -1,5 +1,6 @@
 #build output
 build/
+include/
 cmake-build-*/
 #Cmake generated
 CMakeFiles/
@@ -34,3 +35,5 @@ CTestTestfile.cmake
 .DS_Store
 Thumbs.db
 Dockerfile
+README.md
+
