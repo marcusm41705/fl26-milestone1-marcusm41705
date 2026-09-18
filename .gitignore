@@ -33,3 +33,4 @@ CTestTestfile.cmake
 # OS files
 .DS_Store
 Thumbs.db
+Dockerfile
